@@ -1,0 +1,69 @@
+syntax = "proto3";
+
+package gnat.hamal.v1;
+
+service Hamal {
+  rpc Fetch (FileRequest) returns (stream File) {}
+  rpc Watch (stream WatchRequest) returns (stream NamedFileResponse) {}
+  rpc Upload (stream FileUploadRequest) returns (FileUploadResponse) {}
+  rpc CompareSums (Sumfile) returns (Comparison) {}
+  rpc VerifySum (FileRequest) returns (SumVerification) {}
+}
+
+message FileRequest {
+  string path = 1;
+  string sum = 2;
+}
+
+message FileUploadRequest {
+  map<string, File> files = 1; // map<文件名, 文件二进制内容>，如果未提交 md5sum，则服务端会自行计算
+}
+
+message Error {
+  string message = 1;
+  string details = 2;
+  string code = 3;
+}
+
+message FileUploadResponse {
+  uint32 success = 1; // 成功处理的文件数量
+  uint32 update = 2; // 成功更新的文件数量
+  map<string, Error> errors = 3; // map<文件名, 异常>
+}
+
+message File {
+  bytes content = 1;
+  string sum = 2;
+}
+
+message Sumfile {
+  bytes sumfile = 1;
+  string sumfileString = 2;
+}
+
+message Comparison {
+  uint32 matched = 1;
+  repeated string unmatched = 2;
+  repeated string additional = 3;
+  map<string, Error> errors = 4;
+}
+
+message WatchRequest {
+  bytes sumfile = 1;
+  uint32 batchSize = 2;
+}
+
+message FileResponseWithError {
+  File file = 1;
+  Error error = 2;
+}
+
+message NamedFileResponse {
+  map<string, FileResponseWithError> files = 1;
+  bool hasMore = 2;
+  bool isPull = 3;
+}
+
+message SumVerification {
+  bool match = 1;
+}

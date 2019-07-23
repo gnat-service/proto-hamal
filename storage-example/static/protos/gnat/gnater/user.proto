@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package gnat.gnater;
+
+import "./types.proto";
+import "../mongoose/id.proto";
+import "google/protobuf/any.proto";
+
+service User {
+  rpc Create (UserProfile) returns (UserCreatedResponse) {}
+  rpc CreateWithPassword (RegistrationData) returns (UserCreatedResponse) {}
+  rpc SetPassword (PasswordUpdateIdentity) returns (EmptyResponse) {}
+  rpc ReplacePassword (PasswordUpdateIdentity) returns (EmptyResponse) {}
+  rpc VerifyPassword (PasswordIdentity) returns (EmptyResponse) {}
+}
+
+message UserCreatedResponse {
+  message Result {
+    gnat.mongoose.ObjectId userId = 1;
+  }
+  bool success = 1;
+  Result result = 2;
+  Error error = 3;
+}
+
+message VerifyResponse {
+  message Result {
+    bool verified = 1;
+  }
+  bool success = 1;
+  Result result = 2;
+  Error error = 3;
+}

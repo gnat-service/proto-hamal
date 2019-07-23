@@ -1,0 +1,8 @@
+coverage
+.vscode
+test
+node_modules
+.mocharc.*
+.gitignore
+dist
+*.sh

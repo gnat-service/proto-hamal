@@ -1,0 +1,21 @@
+{
+  "name": "gnat-proto-hamal",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "yarn test-server; yarn test-client; yarn test-storage",
+    "test-server": "cd server && yarn test",
+    "test-client": "cd client && yarn test",
+    "test-storage": "cd storage && yarn test"
+  },
+  "devDependencies": {
+    "@grpc/grpc-js": "^0.5.2",
+    "@grpc/proto-loader": "^0.5.1",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "grpc": "^1.22.0",
+    "mocha": "^6.1.4",
+    "sinon": "^7.3.2"
+  }
+}

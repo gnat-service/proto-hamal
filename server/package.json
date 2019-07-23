@@ -1,0 +1,21 @@
+{
+  "name": "proto-hamal-server",
+  "version": "0.0.1",
+  "main": "index.js",
+  "author": "leaf4monkey <joc98@163.com>",
+  "license": "MIT",
+  "scripts": {
+    "gen-sum": "node lib/gen-sum.js",
+    "start": "node lib/index.js",
+    "test": "mocha",
+    "prepublishOnly": "yarn install; yarn test"
+  },
+  "dependencies": {
+    "proto-hamal-tools": "^0.0.4",
+    "glob": "^7.1.4"
+  },
+  "peerDependencies": {
+    "@grpc/proto-loader": ">= 0.4.0 < 0.6",
+    "grpc": "^1.17.x"
+  }
+}

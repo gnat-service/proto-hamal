@@ -1,0 +1,11 @@
+{
+  "name": "gnat-grpc-hamal-client-patch",
+  "version": "0.0.1",
+  "main": "index.js",
+  "author": "chenwen <cw@huoqiuapp.com>",
+  "license": "MIT",
+  "peerDependencies": {
+    "gnat-grpc": "^1.9.3",
+    "@server/fireball-proto-hamal-client": ">= 0"
+  }
+}

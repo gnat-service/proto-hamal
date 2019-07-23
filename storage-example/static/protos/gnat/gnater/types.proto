@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package gnat.gnater;
+
+import "google/protobuf/any.proto";
+
+enum Algorithm {
+  sha256 = 1;
+}
+
+message Password {
+  Algorithm algorithm = 1;
+  string digest = 2;
+}
+
+message PasswordIdentity {
+  string username = 2;
+  Password password = 3;
+}
+
+message UserProfile {
+  string username = 1;
+  string nickname = 2;
+}
+
+message RegistrationData {
+  UserProfile profile = 1;
+  Password password = 2;
+}
+
+message PasswordUpdateIdentity {
+  string username = 1;
+  Password password = 2;
+  Password oldPassword = 3;
+}
+
+message Error {
+  string code = 1;
+  string message = 2;
+}
+
+message EmptyResponse {
+  bool success = 1;
+  Error error = 3;
+}

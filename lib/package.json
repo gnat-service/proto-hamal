@@ -1,0 +1,13 @@
+{
+  "name": "proto-hamal-tools",
+  "version": "0.0.4",
+  "author": "leaf4monkey <joc98@163.com>",
+  "license": "MIT",
+  "main": "index.js",
+  "dependencies": {
+    "glob": "^7.1.4"
+  },
+  "peerDependencies": {
+    "@grpc/proto-loader": ">= 0.4.0 < 0.6"
+  }
+}
