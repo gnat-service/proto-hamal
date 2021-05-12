@@ -10,7 +10,7 @@
   "dependencies": {
     "@grpc/proto-loader": "^0.5.1",
     "proto-hamal-server": "^0.0.1",
-    "grpc": "^1.22.2"
+    "grpc": "^1.24.9"
   },
   "devDependencies": {
     "chai": "^4.2.0",
